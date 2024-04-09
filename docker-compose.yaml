@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  database:
+    image: mongo:latest
+    ports: 
+      - 27017:27017
+    volumes:
+      - doco:/data/db
+
+  backend:
+    build: ./backend
+    ports:
+      - 4004:4004
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - database
+    environment:
+      MONGO_URI: mongodb://database:27017/doco
+    command: ./docker-entrypoint.sh
+
+  frontend:
+    build: ./frontend
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend:/app
+
+volumes:
+  doco:
