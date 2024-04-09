@@ -21,7 +21,7 @@ app.use(cors())
 //routes
 app.get('/', async (req: Request, res: Response) => {
     // const title="first todo title";
-    // const body="first todo body";
+    // const body="first todo body"; 
 
     // const newTodo = await Todo.create({title, body});
     // res.status(200).json({ todo: newTodo, message: "Todo has been created!" });
